@@ -1,8 +1,10 @@
 HOST: localhost
 RABBITMQ_USERNAME: guest
 RABBITMQ_PASSWORD: guest
-MONGODB_USERNAME: rootuser
-MONGODB_PASSWORD: rootpass
+MYSQL_USERNAME: token_app
+MYSQL_PASSWORD: p_token_app
+MYSQL_DATABASE: token
+MYSQL_PORT: 3306
 range:
   start-adder: 1
   end-adder: 3000
@@ -26,9 +28,9 @@ spring:
     hibernate:
       ddl-auto: none
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:token}?serverTimezone=UTC
-    username: ${MYSQL_USERNAME:token_app}
-    password: ${MYSQL_PASSWORD:p_token_app}
+    url: jdbc:mysql://${HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}?serverTimezone=UTC
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
 
 eureka:
   client:
