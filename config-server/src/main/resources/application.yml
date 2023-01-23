@@ -1,0 +1,47 @@
+HOST: localhost
+RABBITMQ_USERNAME: guest
+RABBITMQ_PASSWORD: guest
+
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          default-label:
+          password:
+          username:
+          clone-on-start: false
+          uri:
+      allowOverride: true
+      overrideNone: true
+      overrideSystemProperties: false
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE}
+  rabbitmq:
+    host: ${HOST}
+    port: 5672
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: httptrace, prometheus
+  endpoint:
+    health:
+      show-details: ALWAYS
+  zipkin:
+    tracing:
+      endpoint: http://${HOST}:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+  info:
+    env:
+      enabled: true
