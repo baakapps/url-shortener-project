@@ -2,8 +2,8 @@ FROM maven:3.8.3-openjdk-17 as maven_build
 COPY ../pom.xml .
 RUN mvn -h clean package
 WORKDIR /build
-COPY ../api-gateway/pom.xml .
-COPY ../api-gateway/src ./src
+COPY ../config-server/pom.xml .
+COPY ../config-server/src ./src
 RUN --mount=type=cache,target=/root/.m2 mvn clean package -Dmaven.test.skip
 
 FROM eclipse-temurin:17-jre-alpine

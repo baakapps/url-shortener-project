@@ -19,6 +19,8 @@ services:
     build:
       context: ../.
       dockerfile: ./range-service/Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
     restart: unless-stopped
     ports:
       - "5200-5210:8083"
