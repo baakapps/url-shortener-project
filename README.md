@@ -12,7 +12,7 @@ Url shortener application with microservice architecture pattern
 ## Services
 
 
-![Infrastructure plan](http://res.cloudinary.com/imrenagi-com/image/upload/v1494871114/Untitled_cwhlwy.png)
+![Infrastructure plan](url-shortener-project.pdf)
 
 
 ### Infrastructure
