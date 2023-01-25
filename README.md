@@ -13,8 +13,7 @@ Url shortener application with microservice architecture pattern
 
 Spring Cloud facilitates the development of applications by providing solutions such as load balancing, service registry, monitoring, and configuration.
 
-(url-shortener-project.png)
-
+![Infrastructure plan](url-shortener-project.png)
 
 ## Services
 
