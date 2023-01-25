@@ -12,7 +12,7 @@ Url shortener application with microservice architecture pattern
 ## Services
 
 
-![Infrastructure plan](url-shortener-project.pdf)
+![Infrastructure plan](url-shortener-project.png)
 
 
 ### Infrastructure
