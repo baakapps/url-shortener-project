@@ -20,6 +20,7 @@
         <module>discovery-server</module>
         <module>range-service</module>
         <module>url-shortener-service</module>
+        <module>observability</module>
     </modules>
 
     <properties>

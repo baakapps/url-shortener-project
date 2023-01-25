@@ -8,5 +8,5 @@ RUN --mount=type=cache,target=/root/.m2 mvn clean package -Dmaven.test.skip
 
 FROM eclipse-temurin:17-jre-alpine
 COPY --from=maven_build /build/target/*.jar app.jar
-EXPOSE 8080
+EXPOSE 8888
 ENTRYPOINT ["java","-jar","app.jar"]
