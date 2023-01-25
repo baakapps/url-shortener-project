@@ -9,19 +9,22 @@ Url shortener application with microservice architecture pattern
 - Independently deployable
 - Capable of being developed by a small team
 
+# Infrastructure
+
+Spring Cloud facilitates the development of applications by providing solutions such as load balancing, service registry, monitoring, and configuration.
+
+(url-shortener-project.png)
+
+
 ## Services
 
+### Url shortener service
 
-![Infrastructure plan](url-shortener-project.png)
 
-
-### Infrastructure
-Provides several API for user authentication and authorization with OAuth 2.0.
-
-| Method | Path              | Description                                   | Scope |
-|--------|-------------------|-----------------------------------------------|-------|
-| POST   | /uaa/oauth/token  | Get new access token and refresh access token | ui    |
-| POST   | /uaa/oauth/logout | Logout to revoke access token                 | ui    |
+| Method | Path              | Description                                
+|--------|-------------------|-------------------------------------------
+| POST   | api/v1/shortUrl/              | Create long url from short url 
+| GET   | api/v1/shortUrl/{shortenedUrl} | Redirect to website using short url 
 
 
 ### Account service
