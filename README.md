@@ -36,8 +36,6 @@ Spring Cloud facilitates the development of applications by providing solutions 
 ### Config server
 Config server allows to externally store variables. Application properties can be updated using config server without restarting microservice.
 
-### API Gateway 
-
 #### Notes
 * Each microservice has it's own database and there is no way to access the database directly from other services.
 * The services in this project are using MySQL for the persistent storage. In other case, it is also possible for one service 
