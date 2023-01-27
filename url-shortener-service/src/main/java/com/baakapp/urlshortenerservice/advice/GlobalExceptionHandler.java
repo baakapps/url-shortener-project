@@ -1,7 +1,6 @@
 package com.baakapp.urlshortenerservice.advice;
 
 import jakarta.el.MethodNotFoundException;
-import jakarta.ws.rs.NotFoundException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
@@ -29,7 +28,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler({MethodNotFoundException.class})
-    public ProblemDetail handleNotFoundErrors(NotFoundException ex) {
+    public ProblemDetail handleNotFoundErrors(MethodNotFoundException ex) {
         ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
         problemDetail.setTitle("NOT_FOUND");
         problemDetail.setDetail(ex.getMessage());

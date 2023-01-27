@@ -27,7 +27,7 @@ public class UrlServiceImpl implements UrlService {
     public Url getLongUrlFromShortUrl(String shortenedUrl) {
         return urlRepository
                 .findByShortUrl(shortenedUrl)
-                .orElseThrow(() -> new MethodNotFoundException("Long url is not found for " + shortenedUrl));
+                .orElseThrow(() -> new MethodNotFoundException("Long url is not found"));
     }
 
     @Override
