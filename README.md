@@ -65,12 +65,12 @@ Grafana
 Zipkin
 
 
-Collision is handled by fetching ranges from range service.
-Pessimistic locking implemented for avoiding collision in concurrent requests.
-If one range service goes down, one of the other instances will be tried by OpenFeign.
-High availability and load balancing achieved by replicated instances.
-MongoDB can scale horizontally and share the load.
-Reduced response time by caching shortened url.
+* Collision is handled by fetching ranges from range service.
+* Pessimistic locking implemented for avoiding collision in concurrent requests.
+* If one range service goes down, one of the other instances will be tried by OpenFeign.
+* High availability and load balancing achieved by replicated instances.
+* MongoDB can scale horizontally and share the load.
+* Reduced response time by caching shortened url.
 
 
 * başarılı hatalı response örnekleri
