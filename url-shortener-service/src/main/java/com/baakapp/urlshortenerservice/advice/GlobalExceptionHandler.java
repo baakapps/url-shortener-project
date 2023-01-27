@@ -16,8 +16,15 @@ public class GlobalExceptionHandler {
     public ProblemDetail handleValidationErrors(MethodArgumentNotValidException ex) {
         ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
         problemDetail.setTitle("ARGUMENT_VALIDATION_ERROR");
-        problemDetail.setDetail("Request parameter could not be validated");
-        problemDetail.setProperty("errors", ex.getBindingResult().getFieldErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage));
+        problemDetail.setDetail(
+                ex
+                .getBindingResult()
+                .getFieldErrors()
+                .stream()
+                .findFirst()
+                .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                .orElse("Request parameter could not be validated")
+        );
         return problemDetail;
     }
 
