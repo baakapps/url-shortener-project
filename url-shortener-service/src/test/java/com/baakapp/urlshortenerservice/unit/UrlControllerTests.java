@@ -7,10 +7,13 @@ import com.baakapp.urlshortenerservice.service.UrlService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -55,6 +58,30 @@ class UrlControllerTests {
         ShortUrlResponse generatedShortUrlResponse = new ObjectMapper().readValue(responseBodyAsString, ShortUrlResponse.class);
 
         assertEquals(shortUrlResponse.shortUrl(), generatedShortUrlResponse.shortUrl());
+    }
+
+    @DisplayName("Long url validation")
+    @ParameterizedTest
+    @CsvSource(textBlock =
+            """
+            google,
+            google.,
+            www.googlecom,
+            htt://www.google.com
+            """)
+    void whenInvalidLongUrlProvidedThenThrowsError(String invalidLongUrl) throws Exception {
+        LongUrlRequest invalidLongUrlRequest = new LongUrlRequest(invalidLongUrl);
+
+        RequestBuilder requestBuilder =
+                MockMvcRequestBuilders
+                        .post("/api/v1/shortUrl")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .content(new ObjectMapper().writeValueAsString(invalidLongUrlRequest));
+
+        MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();
+
+        assertEquals(HttpStatus.BAD_REQUEST.value(), mvcResult.getResponse().getStatus());
     }
 
 }

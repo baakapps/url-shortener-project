@@ -20,7 +20,7 @@ public class UrlController {
     private final UrlService urlService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ShortUrlResponse> createShortUrlFromLongUrl(@RequestBody @Valid LongUrlRequest longUrlRequest) {
+    public ResponseEntity<ShortUrlResponse> createShortUrlFromLongUrl(@Valid @RequestBody LongUrlRequest longUrlRequest) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(urlService.createShortUrlFromLongUrl(longUrlRequest.longUrl()));

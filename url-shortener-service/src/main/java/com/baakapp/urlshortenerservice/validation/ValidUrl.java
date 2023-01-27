@@ -16,7 +16,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 public @interface ValidUrl {
 
-    String message() default "It is not valid URL format";
+    String message() default "Invalid URL format found";
 
     Class<?>[] groups() default { };
 
