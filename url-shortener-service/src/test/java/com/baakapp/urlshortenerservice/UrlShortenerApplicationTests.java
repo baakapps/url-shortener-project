@@ -1,20 +1,20 @@
-package com.baakapp.rangeservice;
+package com.baakapp.urlshortenerservice;
 
-import com.baakapp.rangeservice.controller.RangeController;
+import com.baakapp.urlshortenerservice.controller.UrlController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest
-class RangeServiceApplicationTests {
+@SpringBootTest(classes = UrlShortenerApplicationTests.class)
+class UrlShortenerApplicationTests {
     @Autowired
-    private RangeController rangeController;
+    private UrlController urlController;
 
     @Test
     void contextLoads() {
-        assertNotNull(rangeController);
+        assertNotNull(urlController);
     }
 
 }
