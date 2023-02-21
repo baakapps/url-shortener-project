@@ -1,0 +1,47 @@
+global:
+  scrape_interval: 1m
+
+scrape_configs:
+  - job_name: "prometheus"
+    scrape_interval: 15s
+    static_configs:
+      - targets: [ "host.docker.internal:9090" ]
+  - job_name: "node"
+    static_configs:
+      - targets: [ "host.docker.internal:9100" ]
+
+  - job_name: 'url-shortener-service'
+    scrape_interval: 15s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:5100']
+        labels:
+          application: 'Url shortener'
+  - job_name: 'range-service'
+    scrape_interval: 15s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:5200']
+        labels:
+          application: 'Range service'
+  - job_name: 'api-gateway'
+    scrape_interval: 15s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8080']
+        labels:
+          application: 'Api gateway application'
+  - job_name: 'config-server'
+    scrape_interval: 15s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'host.docker.internal:8888' ]
+        labels:
+          application: 'Config server'
+  - job_name: 'discovery-server'
+    scrape_interval: 15s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'host.docker.internal:8761' ]
+        labels:
+          application: 'Eureka server'
