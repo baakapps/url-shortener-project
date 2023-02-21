@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  discovery-server:
+    image: discovery-server
+    container_name: discovery-server
+    build:
+      context: ../.
+      dockerfile: ./discovery-server/Dockerfile
+    environment:
+      - HOST=host.docker.internal
+    ports:
+      - "8761:8761"

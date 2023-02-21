@@ -1,0 +1,51 @@
+HOST: localhost
+
+range:
+  startAdder: 1
+  endAdder: 3000
+
+server:
+  port: 5200
+
+spring:
+  application:
+    name: range-service
+  config:
+    import: optional:configserver:http://${HOST}:8888/
+  rabbitmq:
+    host: ${HOST}
+    port: 5672
+    username: guest
+    password: guest
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:mysql://${HOST}:3306/url_shortener?serverTimezone=UTC
+    username: range_app
+    password: p_range_app
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${HOST}:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: httptrace, prometheus, busrefresh, busenv
+  endpoint:
+    health:
+      show-details: ALWAYS
+  zipkin:
+    tracing:
+      endpoint: http://${HOST}:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+  info:
+    env:
+      enabled: true

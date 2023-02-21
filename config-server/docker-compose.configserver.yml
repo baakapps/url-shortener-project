@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+  config-server:
+    image: config-server
+    container_name: config-server
+    build:
+      context: ../.
+      dockerfile: ./config-server/Dockerfile
+    environment:
+      - HOST=host.docker.internal
+    ports:
+      - "8888:8888"
+    depends_on:
+      - rabbitmq
+    links:
+      - rabbitmq

@@ -1,0 +1,41 @@
+HOST: localhost
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: url-shortener-service
+          uri: lb://${spring.cloud.gateway.routes[0].id}
+          predicates:
+            - Path= /api/v1/shortUrl, /api/v1/shortUrl/{segment}
+            - Method= POST, GET
+    config:
+      enabled: false
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${HOST}:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: httptrace, prometheus
+  endpoint:
+    health:
+      show-details: ALWAYS
+  zipkin:
+    tracing:
+      endpoint: http://${HOST}:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+  info:
+    env:
+      enabled: true

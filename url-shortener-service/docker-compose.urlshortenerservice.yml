@@ -1,0 +1,52 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - data:/data
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=rootuser
+      - MONGO_INITDB_ROOT_PASSWORD=rootpass
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=rootuser
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=rootpass
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+    depends_on:
+      - mongodb
+  redis:
+    image: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+  url-shortener-service:
+    image: url-shortener-service
+    build:
+      context: ../.
+      dockerfile: ./url-shortener-service/Dockerfile
+    environment:
+      - HOST=host.docker.internal
+    ports:
+      - "5100"
+    depends_on:
+      - mongodb
+      - mongo-express
+    deploy:
+      mode: replicated
+      replicas: 2
+
+volumes:
+  data: {}
+
+networks:
+  default:
+    name: mongodb_network
