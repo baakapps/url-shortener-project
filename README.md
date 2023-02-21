@@ -1,6 +1,3 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
-
-
 <div align="center">
 
 # Url Shortener
@@ -12,7 +9,9 @@ Url shortener application with microservice architecture pattern
 [How to use](#how-to-use) •
 [Projects](#projects) •
 [Roadmap](#roadmap) •
-[Error response](#error-response) 
+[Error response](#error-response)
+  
+![Infrastructure plan](url-shortener-project.png)
 
 </div>
 
@@ -58,8 +57,6 @@ HTTP/1.1 200 OK
 ```
 
 ## Projects
-
-![Infrastructure plan](url-shortener-project.png)
 
 ### Important Endpoints
 * [http://localhost:8080](http://localhost:8080) - Api gateway
