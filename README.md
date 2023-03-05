@@ -10,8 +10,12 @@ Url shortener application with microservice architecture pattern
 [Projects](#projects) •
 [Roadmap](#roadmap) •
 [Error response](#error-response)
+
+![Tech stack](tech-stack.png)
   
 ![Infrastructure plan](url-shortener-project.png)
+
+
 
 </div>
 
