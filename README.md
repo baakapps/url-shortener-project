@@ -12,10 +12,8 @@ Url shortener application with microservice architecture pattern
 [Error response](#error-response)
 
 ![Tech stack](tech-stack.png)
-  
-![Infrastructure plan](url-shortener-project.png)
-
-
+    
+<img src="url-shortener-project.png" width="500" height="500" />
 
 </div>
 
