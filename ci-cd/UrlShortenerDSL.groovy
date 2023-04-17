@@ -10,10 +10,6 @@ pipelineJob('url-shortener-dsl') {
             stages {
                 stage('Build') {
                     steps {
-                        maven {
-                            goals('clean package')
-                            jdk('maven-default')
-                        }
                         archiveArtifacts('**/*.jar')
                     }
                 }
