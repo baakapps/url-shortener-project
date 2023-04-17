@@ -1,11 +1,11 @@
 pipelineJob('url-shortener-dsl') {
     description("Url shortener project")
-    scm {
-        git("https://github.com/baakapps/url-shortener-project.git", 'master')
-    }
     definition {
         cps {
             sandbox()
+            scm {
+                git("https://github.com/baakapps/url-shortener-project.git", 'master')
+            }
             script(readFileFromWorkspace('Jenkinsfile'))
             stages {
                 stage('Build') {
