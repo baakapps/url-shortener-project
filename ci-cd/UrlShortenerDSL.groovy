@@ -5,9 +5,9 @@ pipelineJob('url-shortener-dsl') {
             sandbox()
             script(readFileFromWorkspace("${WORKSPACE}/ci-cd/Jenkinsfile"))
         }
-        scm {
-            git("https://github.com/baakapps/url-shortener-project.git", 'master')
-        }
+    }
+    scm {
+        git("https://github.com/baakapps/url-shortener-project.git", 'master')
     }
     parameters {
         booleanParam(name: 'runAllServices', defaultValue: true, description: 'Whether to run all services or select some of them')
