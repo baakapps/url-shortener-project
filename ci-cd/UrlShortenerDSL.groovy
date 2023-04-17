@@ -4,16 +4,9 @@ pipelineJob('url-shortener-dsl') {
         cps {
             sandbox()
             script(readFileFromWorkspace("${WORKSPACE}/ci-cd/Jenkinsfile"))
-            scm {
-                git("https://github.com/baakapps/url-shortener-project.git", 'master')
-            }
-            stages {
-                stage('Build') {
-                    steps {
-                        archiveArtifacts('**/*.jar')
-                    }
-                }
-            }
+        }
+        scm {
+            git("https://github.com/baakapps/url-shortener-project.git", 'master')
         }
     }
     parameters {
