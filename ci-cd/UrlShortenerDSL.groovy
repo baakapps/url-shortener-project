@@ -18,7 +18,7 @@ pipelineJob('url-shortener-dsl') {
     }
     parameters {
         booleanParam(name: 'runAllServices', defaultValue: true, description: 'Whether to run all services or select some of them')
-        choiceParam(name: 'selectedServices', choices: ['serviceA', 'serviceB', 'serviceC'], description: 'Select the services to run', multiSelect: true, filterable: true)
+        choiceParam(name: 'selectedServices', choices: ['api-gateway', 'config-server', 'discovery-server', 'range-service', 'url-shortener-service'], description: 'Select the services to run', multiSelect: true, filterable: true)
     }
     triggers {
         scm('* * * * *')
