@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    parameters {
-        booleanParam(name: 'runAllServices', defaultValue: true, description: 'Whether to run all services or select some of them')
-        choice(name: 'selectedServices', choices: ['api-gateway', 'config-server', 'discovery-server', 'range-service', 'url-shortener-service'], description: 'Select the services to run', multiSelect: true, filterable: true)
-    }
-
     stages {
         stage('Checkout') {
             steps {
