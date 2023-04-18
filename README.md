@@ -108,15 +108,15 @@ HTTP/1.1 200 OK
 * Clients use APIs by Api Gateway instead of directly communicating with url shortener service. Api Gateway provides routing and load balancing.
 
 ### Discovery server
-* Eureka server provides services discovery
+* Eureka server provides service discovery
 
 ## Roadmap
-- [ ] Kubernetes
 - [ ] Jenkis pipeline
+- [ ] Kubernetes
+- [ ] ELK stack
 - [ ] Mysql master slave replication
 - [ ] Authentication and authorization
 - [ ] Rate limiting with Spring Cloud Gateway
-- [ ] ELK stack
 - [ ] AWS
 
 ## Error response
@@ -129,7 +129,6 @@ Content-Type: application/json
   "longUrl" : ""
 }
 ```
-#### 1. Response
 ```
 HTTP/1.1 400 
 Content-Type: application/problem+json
@@ -151,7 +150,6 @@ Content-Type: application/json
   "longUrl" : "ww.google"
 }
 ```
-#### 2. Response
 ```
 HTTP/1.1 400 
 Content-Type: application/problem+json
@@ -169,7 +167,6 @@ Content-Type: application/problem+json
 ```
 GET /api/v1/shortUrl/abcdef123456random
 ```
-#### 3. Response
 ```
 HTTP/1.1 404 
 Content-Type: application/json
