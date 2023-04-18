@@ -75,6 +75,8 @@ HTTP/1.1 200 OK
 * [http://localhost:6379](http://localhost:6379) - Redis
 * [http://localhost:5200](http://localhost:5200) - Range service 
 * [http://localhost:3306](http://localhost:3306) - Mysql (username/password/database: range_app/p_range_app/url_shortener)
+* [http://localhost:8082](http://localhost:8082) - Jenkins
+
 
 ### Services
 * Implemented Docker and Docker compose for deployment.
