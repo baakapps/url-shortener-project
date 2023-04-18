@@ -77,41 +77,42 @@ HTTP/1.1 200 OK
 * [http://localhost:3306](http://localhost:3306) - Mysql (username/password/database: range_app/p_range_app/url_shortener)
 
 ### Services
-* Highly available and testable, independently deployable, capable of being developed by a small team.
-* Collision is handled by fetching range from range service.
-* Testcontainers for integration testing.
-* Completed unit testing.
+* Implemented Docker and Docker compose for deployment.
+* Implemented unit testing and integration testing using JUnit, Mockito and Testcontainers.
+* Implemented swagger documentation
 
 ### Url shortener service
+* Improved the performance by implementing Redis caching in the application, resulting in faster response times.
+* Utilized MongoDB as the database for the Url Shortener service, resulting in improved performance and scalability, as well as easier implementation of features such as sharding and replica sets.
 * If one range service goes down, other instances will be tried by OpenFeign.
-* MongoDB can scale horizontally and share the load.
-* Reduced response time by caching shortened url. Check cache first, if not found then check database.
 * Implemented url validation
-* [http://localhost:5100/swagger-ui/index.html#/](http://localhost:5100/swagger-ui/index.html#/) Swagger UI
+* [Swagger UI](http://localhost:5200/swagger-ui/index.html/)
 
 ### Range service
-* Implemented pessimistic locking for avoiding collision in concurrent requests.
-* [http://localhost:5200/swagger-ui/index.html#/](http://localhost:5200/swagger-ui/index.html#/) Swagger UI
+* Utilized Pessimistic locking in JPA for the Range service to share range without concurrency problem for multiple instances of Url shortener service.
+* [Swagger UI](http://localhost:5200/swagger-ui/index.html/) 
 
 ### Config server
-* Config server allows to externally store variables. Application properties of url shortener and range services can be updated using config server without restarting them.
+* Implemented Spring Cloud Config Server to store and manage configuration properties for multiple microservices.
+* Spring Cloud Bus with RabbitMQ enables automatic reload of configuration changes across all instances of a microservice architecture, reducing downtime and increasing availability.
 1. Push commits in config repository
 2. Send request: POST http://localhost:8888/actuator/busrefresh
 
 ### Observability 
-* Used Prometheus and Grafana for monitoring and Zipkin for tracing.
+* Utilized Prometheus, Grafana, and Node exporter to monitor system performance and resource usage in real-time, allowing for proactive identification and resolution of potential issues.
+* Implemented Zipkin for distributed tracing of microservices, helping to identify and diagnose performance issues within complex systems.
 * Grafana setup:
 1. Add Prometheus data source with url http://host.docker.internal:9090
 2. Upload JSON file from observability/prometheus/grafana-dashboard.json
 
 ### Api Gateway 
-* Clients use APIs by Api Gateway instead of directly communicating with url shortener service. Api Gateway provides routing and load balancing.
+* Utilized the Spring Cloud API Gateway to effectively manage and route traffic across multiple microservices, resulting in improved performance and scalability of the overall system.
 
 ### Discovery server
-* Eureka server provides service discovery
+* Improved scalability and availability of services by using Eureka server for dynamic service discovery and load balancing.
 
 ## Roadmap
-- [ ] Jenkis pipeline
+- [ ] Jenkins pipeline
 - [ ] Kubernetes
 - [ ] ELK stack
 - [ ] Mysql master slave replication
