@@ -124,18 +124,15 @@ HTTP/1.1 200 OK
 
 ## Error response
 
-#### 1. Request
 ```
 POST /api/v1/shortUrl
 Content-Type: application/json
 {
   "longUrl" : ""
 }
-```
-```
+
 HTTP/1.1 400 
 Content-Type: application/problem+json
-    
 {
   "type": "about:blank",
   "title": "ARGUMENT_VALIDATION_ERROR",
@@ -145,18 +142,15 @@ Content-Type: application/problem+json
 }
 ```
 
-#### 2. Request
 ```
 POST /api/v1/shortUrl
 Content-Type: application/json
 {
   "longUrl" : "ww.google"
 }
-```
-```
+
 HTTP/1.1 400 
 Content-Type: application/problem+json
-    
 {
   "type": "about:blank",
   "title": "ARGUMENT_VALIDATION_ERROR",
@@ -166,14 +160,11 @@ Content-Type: application/problem+json
 }
 ```
 
-#### 3. Request
 ```
 GET /api/v1/shortUrl/abcdef123456random
-```
-```
+
 HTTP/1.1 404 
 Content-Type: application/json
-    
 {
   "type": "about:blank",
   "title": "NOT_FOUND",
@@ -183,8 +174,9 @@ Content-Type: application/json
 }
 ```
 
-#### Generic error response
 ```
+Generic error response
+
 HTTP/1.1 500 
 Content-Type: application/json
 {
