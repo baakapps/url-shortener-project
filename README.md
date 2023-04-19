@@ -32,30 +32,23 @@ docker-compose up --build
 ```
 POST http://localhost:8080/api/v1/shortUrl
 Content-Type: application/json
-
 {
   "longUrl" : "https://www.google.com"
 }
-```
-#### Short url response
-```
+
 HTTP/1.1 201 
 Content-Type: application/json
-    
 {
   "shortUrl": "Ny1"
 }
 ```
-
 #### Redirect to long url 
 ```
 GET http://localhost:8080/api/v1/shortUrl/Ny1
-```
-#### Redirection response
-```
+
+HTTP/1.1 200
 Redirections:
 -> https://www.google.com/
-HTTP/1.1 200 OK
 ```
 
 ## Projects
